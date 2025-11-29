@@ -1,4 +1,4 @@
-<!-- SANTOS JEORGE ANDREI BENEDICT M.    WD-203 -->
+<!-- SANTOS JEORGE ANDREI BENEDICT M.    WD-201 -->
 <?php
 // TITLES AND TAGLINE
 $storeName = "That Headphone Shop";
@@ -28,6 +28,7 @@ $product3 = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>That Headphone Shop</title>
+    <!-- CSS across two php files -->
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -36,6 +37,9 @@ $product3 = [
             margin: 0;
             padding: 40px;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h1{
@@ -58,6 +62,15 @@ $product3 = [
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        th {
+            background-color: #2f2f2fff;
+            color: #FF6B35;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
         }
 
         tr{
@@ -72,41 +85,81 @@ $product3 = [
             background-color: #2f2f2fff;
             color: #FF6B35;
         }
-        .classification{
+
+        footer {
             background-color: #2f2f2fff;
             color: white;
-            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer .orange {
+            color: #FF6B35;
         }
 
     </style>
 </head>
-<!-- START -->
+
 <body>
     <h1><?php echo $storeName ?></h1>
     <h2><?php echo $tagline ?></h2>
-<table>
-    <tr class="classification">
-        <th>Model</th>
-        <th>Price</th>
-        <th>In Stock</th>
-    </tr>
-    <tr>
-        <td><?php echo $product1["name"]; ?></td>
-        <td>₱ <?php echo $product1["price"]; ?></td>
-        <td><?php echo $product1["stock"]; ?></td>
-    </tr>
+    
+    <!-- Price list for Main Stream Headphones section -->
+    <table>
+        <h2>Industry Standard Line</h2>
+        <tr>
+            <th>Model</th>
+            <th>Price</th>
+            <th>In Stock</th>
+        </tr>
+        <tr>
+            <td><?php echo $product1["name"]; ?></td>
+            <td>₱ <?php echo $product1["price"]; ?></td>
+            <td><?php echo $product1["stock"]; ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $product2["name"]; ?></td>
+            <td>₱ <?php echo $product2["price"]; ?></td>
+            <td><?php echo $product2["stock"]; ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $product3["name"]; ?></td>
+            <td>₱ <?php echo $product3["price"]; ?></td>
+            <td><?php echo $product3["stock"]; ?></td>
+        </tr>
+    </table>
 
-    <tr>
-        <td><?php echo $product2["name"]; ?></td>
-        <td>₱ <?php echo $product2["price"]; ?></td>
-        <td><?php echo $product2["stock"]; ?></td>
-    </tr>
+    <!-- Price List for the premium headphone section -->
+    <?php
+    $products = [
+        'Meze Elite' => 4000,
+        'Sennheiser HE-1' => 60000,
+        'Meze Empyrean' => 2999,
+    ];
+    ?>
+    <h2>Premium Line (Request price upon ordering)</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        <?php foreach ($products as $item => $price) {?>
+            <tr>
+                <td><?= $item?></td>
+                <td>$ <?= $price?></td>
+            </tr>
+        <?php }?>
+    </table>
 
-    <tr>
-        <td><?php echo $product3["name"]; ?></td>
-        <td>₱ <?php echo $product3["price"]; ?></td>
-        <td><?php echo $product3["stock"]; ?></td>
-    </tr>
-</table>
+    <footer>
+        <p>Created By: SANTOS JEORGE ANDREI BENEDICT M - WD-203 &copy; <span class="orange"><?php echo date('Y')?></span></p>
+    </footer>
 </body>
 </html>
